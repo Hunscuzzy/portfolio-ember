@@ -6,21 +6,16 @@ import { hbs } from 'ember-cli-htmlbars';
 module('Integration | Component | masked-image', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('it renders', async function (assert) {
-    // Set any properties with this.set('myProperty', 'value');
-    // Handle any actions with this.set('myAction', function(val) { ... });
-
-    await render(hbs`<MaskedImage />`);
-
-    assert.dom().hasText('');
-
-    // Template block usage:
+  test('it renders an image with provided attributes', async function (assert) {
     await render(hbs`
-      <MaskedImage>
-        template block text
-      </MaskedImage>
+      <MaskedImage 
+        @imageUrl="/images/sample-image.jpg"
+        @imageAlt="Sample Alt Image" 
+      />
     `);
 
-    assert.dom().hasText('template block text');
+    assert.dom('img').exists();
+    assert.dom('img').hasAttribute('src', '/images/sample-image.jpg');
+    assert.dom('img').hasAttribute('alt', 'Sample Alt Image');
   });
 });

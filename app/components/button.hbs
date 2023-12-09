@@ -1,0 +1,17 @@
+{{#if this.isLink}}
+  <LinkTo
+    @route={{this.args.route}}
+    class="btn {{this.args.btnClass}}"
+    {{on "click" this.onClick}}
+  >
+    {{yield}}
+  </LinkTo>
+{{else}}
+  <button
+    type="button"
+    class="btn {{this.args.btnClass}}"
+    {{on "click" this.onClick}}
+  >
+    {{yield}}
+  </button>
+{{/if}}

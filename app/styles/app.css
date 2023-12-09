@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.btn {
+  @apply bg-green-600 text-blue-100 py-2 px-4 rounded max-w-fit;
+  @apply hover:bg-green-300 focus:outline-none focus:ring transition-colors;
+}
