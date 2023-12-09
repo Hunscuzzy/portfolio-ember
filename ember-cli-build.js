@@ -15,6 +15,7 @@ module.exports = function (defaults) {
               config: './tailwind.config.js',
             },
           },
+          require('postcss-nesting'),
           require('autoprefixer'),
         ],
       },
