@@ -7,15 +7,15 @@ module.exports = function (defaults) {
     postcssOptions: {
       compile: {
         enabled: true,
-        cacheInclude: [/.*\.(css|hbs)$/, /tailwind.config.js$/], 
+        cacheInclude: [/.*\.(css|hbs)$/, /tailwind.config.js$/],
         plugins: [
           {
             module: require('tailwindcss'),
             options: {
-              config: './tailwind.config.js', // Chemin vers ton fichier de configuration Tailwind
+              config: './tailwind.config.js',
             },
           },
-          require('autoprefixer'), // Ajoute Autoprefixer sans options spécifiques
+          require('autoprefixer'),
         ],
       },
     },
