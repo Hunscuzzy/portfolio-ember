@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'portfolio/tests/helpers';
-import { render } from '@ember/test-helpers';
+import { render, click } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
 module('Integration | Component | button', function (hooks) {
@@ -20,5 +20,17 @@ module('Integration | Component | button', function (hooks) {
     await render(hbs`<Button @route="home">Go Home</Button>`);
     assert.dom('a').hasText('Go Home');
     assert.dom('a').hasClass('btn');
+  });
+
+  test('it triggers onClick action when clicked', async function (assert) {
+    this.set('mockAction', () => {
+      this.set('clicked', true);
+    });
+    this.set('clicked', false);
+
+    await render(hbs`<Button @onClick={{this.mockAction}}>Click Me</Button>`);
+    await click('button');
+
+    assert.ok(this.clicked, 'onClick action has been triggered');
   });
 });
